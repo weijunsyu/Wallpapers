@@ -39,13 +39,12 @@ function Droplet(text, colour, alpha) {
     this.alpha = alpha; // current alpha value of the text colour
 }
 
-function Waterfall(alphaOffset, dropChance, fontSize, fontStyle, textColour, messages = []) {
+function Waterfall(alphaOffset, dropChance, fontSize, fontStyle, textColour) {
     this.alphaOffset = alphaOffset; // amount of transparency added per waveFront increment
     this.dropChance = dropChance; // chance (between 0 - 1) of a droplet spawning at top of waterfall
     this.fontSize = fontSize; // determines the size of the "grid" of screenArray
     this.fontStyle = fontStyle;
     this.textColour = textColour; // default colour of the text give as: [r, g, b]
-    this.messages = messages; // list of all messages that should be written in this waterfall
     
     this.screenArray = []; // flattened matrix of all Droplets
     this.waveFront = []; // position array of the wavefront (waterfall leading edge)
@@ -53,11 +52,10 @@ function Waterfall(alphaOffset, dropChance, fontSize, fontStyle, textColour, mes
     this.numRow = Math.ceil(canvas.height/this.fontSize);
     initWaveFront(this.waveFront, this.numCol);
 
-    this.reset = function(newFontSize, newMessages = []) {
+    this.reset = function(newFontSize) {
         this.screenArray.length = 0;
         this.waveFront = [];
         this.fontSize = newFontSize;
-        this.messages = newMessages;
         this.numCol = Math.ceil(canvas.width/this.fontSize);
         this.numRow = Math.ceil(canvas.height/this.fontSize);
         initWaveFront(this.waveFront, this.numCol);
@@ -71,17 +69,6 @@ function Waterfall(alphaOffset, dropChance, fontSize, fontStyle, textColour, mes
     }
 }
 
-function Message(msgString, msgColour, msgOrientation, msgPosition) {
-    this.msgString = msgString;
-    this.msgColour = msgColour;
-    // Either "horizontal" or "vertical" with .toLowerCase() to prevent ambiguity
-    this.msgOrientation = msgOrientation.toLowerCase();
-    // If value between 0 - 1 then value is a percentage of screen with origin at the center of message
-    // otherwise value is the exact index into matrix with origin at the start of message
-    this.msgPosition = msgPosition; // [col, row]
-
-    this.verticalIndex = 0; // Set index to 0 on init (for use for vertical oriented messages)
-}
 
 // Take rgba values and convert them to its string representation
 function rgbaToString(r, g, b, a) {
@@ -113,109 +100,9 @@ function updateAlpha(screenArray, alphaOffset) {
         screenArray[i].alpha = Math.max((screenArray[i].alpha - alphaOffset), 0);
     }
 }
-// Get the starting column and row of the message given a relative position represented by a percentage of the screen
-function getMsgStartColRow(msgString, msgOrientation, msgPosition, numCol, numRow) {
-    let col = msgPosition[0];
-    let row = msgPosition[1];
-    let offset = Math.ceil(msgString.length / 2); // Offset finding center of msg
-
-    if (col < 1) {
-        // col := 0 <= msgPosition[col] <= (numCol - 1) = index of last column
-        col = Math.min(Math.max(Math.floor(numCol * msgPosition[0]), 0), numCol - 1);
-        if (msgOrientation === "horizontal") {
-            // if msg orientation is horizontal then shift the starting column back by the offset
-            col = col - offset;
-        }
-    }
-    if (row < 1) {
-        row = Math.min(Math.max(Math.floor(numRow * msgPosition[1]), 0), numRow - 1);
-        if (msgOrientation === "vertical") {
-            // if msg orientation is vertical then shift the starting row up by the offset
-            row = row - offset;
-        }
-    }
-    // return [col, row] after clamping the position to make sure its within the bounds of the screen
-    return clampMsgPosition(msgString, msgOrientation, col, row, numCol, numRow);
-}
-
-// Clamp the col and row of the message such that it is within the bounds of the screen
-function clampMsgPosition(msgString, msgOrientation, col, row, numCol, numRow) {
-    if (msgOrientation === "vertical") {
-        //check that starting row is >= 0
-        //check that ending row is <= numRow with starting row >=0 taking precedence
-        row = Math.max(row, 0); // if make sure row is at least 0
-         // get the ending index of the msg (row)
-        let endRow = row + msgString.length - 1; // -1 since the length of the string is 1 more than the index
-        // If the message is cut off at the end and there is room for it to be moved up
-        if (endRow > numRow && row >= 0) {
-            // get the offset that we need to move the message up by to show the entire message
-            let offset = endRow - (numRow - 1); // -1 since numRow is the length but we want the index (of the last row)
-            row = Math.max(row - offset, 0);
-        }
-    }
-    else if (msgOrientation === "horizontal") {
-        col = Math.max(col, 0);
-        let endCol = col + msgString.length - 1;
-        if (endCol > numCol && col >= 0) {
-            let offset = endCol - (numCol - 1);
-            col = Math.max(col - offset, 0);
-        }
-    }
-    return [col, row];
-}
-
-function updateTextWithMessage(screenArray, index, msgString, msgIndex, msgColour) {
-    let msgText = msgString[msgIndex]; // Get the character at index (of message)
-    if (msgText !== " ") {
-        screenArray[index].text = msgString[msgIndex];
-        screenArray[index].colour = msgColour;
-    }
-}
-
-function injectMessage(message, screenArray, numCol, numRow, index) {
-    // Cache values:
-    let msgString = message.msgString;
-    let msgColour = message.msgColour;
-    let msgOrientation = message.msgOrientation;
-    let msgPosition = message.msgPosition;
-    let msgLen = msgString.length;
-
-    // Get the starting column and row of the message in the screenArray
-    let [msgCol, msgRow] = getMsgStartColRow(msgString, msgOrientation, msgPosition, numCol, numRow);
-    // Get the index of the screenArray corresponding to the col and row
-    let msgStartIndex = getIndex(msgCol, msgRow, numCol);
-    // If horizontal then the entire message needs to be displayed during one iteration of waveFront
-    if (msgOrientation === "horizontal") {
-        // If msgStartIndex <= index < (msgStartIndex + msg.length)
-        if (msgStartIndex <= index && index < (msgStartIndex + msgLen)) {
-            let msgIndex = index - msgStartIndex; // Get the index into the message
-            updateTextWithMessage(screenArray, index, msgString, msgIndex, msgColour);
-        }
-    }
-    // If vertical then we need to save the index as message is displayed over multiple waveFront iterations
-    else if (msgOrientation === "vertical") {
-        let offset = message.verticalIndex * numCol;
-        if (index == msgStartIndex + offset) {
-            let msgIndex = message.verticalIndex; // Get the index into the message
-            updateTextWithMessage(screenArray, index, msgString, msgIndex, msgColour);
-            message.verticalIndex++; // move index forward
-            if (message.verticalIndex >= msgLen) {
-                message.verticalIndex = 0; // if at end of msg then reset index
-            }
-        }
-    }
-}
 
 // Update the screenArray with the new text given the waveFront
-function updateText(screenArray, waveFront, dropChance, fontSize, textColour, numCol, numRow, messages, alphabet) {
-    //console.log(numCol + " " + numRow);
-
-    let msgFlag = false; // Set flag for if there exists messages to inject (cache the value)
-    // If there are indeed messages then toggle msgFlag
-    if (messages && messages.length) { // Array.isArray(messages) && messages.length
-        msgFlag = true;
-    }
-
+function updateText(screenArray, waveFront, dropChance, fontSize, textColour, numCol, numRow, alphabet) {
     // lenWave gets the length of waveFront up-front since length of waveFront is static
     for (let i = 0, lenWave = waveFront.length; i < lenWave; i++) {
         let text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
@@ -227,15 +114,6 @@ function updateText(screenArray, waveFront, dropChance, fontSize, textColour, nu
             screenArray[index].text = text;
             screenArray[index].colour = textColour;
             screenArray[index].alpha = 1;
-        }
-
-        // Inject messages
-        //Check if there are messages to add inject in the first place by checking the cache
-        if (msgFlag) {
-            //If there are messages to inject start injecting each message in messages
-            for (let j = 0, lenMessages = messages.length; j < lenMessages; j++) {
-                injectMessage(messages[j], screenArray, numCol, numRow, index);
-            }
         }
 
         // If waveFront is below the screen or if waveFront on standby
@@ -283,12 +161,11 @@ function updateWaterfall(waterfall, alphabet) {
     let fontSize = waterfall.fontSize;
     let fontStyle = waterfall.fontStyle;
     let textColour = waterfall.textColour;
-    let messages = waterfall.messages;
     let numCol = waterfall.numCol;
     let numRow = waterfall.numRow;
 
     updateAlpha(screenArray, alphaOffset);
-    updateText(screenArray, waveFront, dropChance, fontSize, textColour, numCol, numRow, messages, alphabet);
+    updateText(screenArray, waveFront, dropChance, fontSize, textColour, numCol, numRow, alphabet);
     draw(screenArray, fontSize, fontStyle, numCol);
 }
 
