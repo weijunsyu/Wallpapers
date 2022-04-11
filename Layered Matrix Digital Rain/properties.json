@@ -240,7 +240,7 @@
         "order" : 106,
         "text" : "Font Size of Waterfall",
         "type" : "slider",
-        "value" : 11
+        "value" : 22
     },
     "size2" : 
     {
@@ -252,7 +252,7 @@
         "order" : 111,
         "text" : "Font Size of Waterfall 2",
         "type" : "slider",
-        "value" : 22
+        "value" : 33
     },
     "size3" : 
     {
@@ -264,7 +264,7 @@
         "order" : 116,
         "text" : "Font Size of Waterfall 3",
         "type" : "slider",
-        "value" : 33
+        "value" : 44
     },
     "size4" : 
     {
@@ -276,6 +276,6 @@
         "order" : 121,
         "text" : "Font Size of Waterfall 4",
         "type" : "slider",
-        "value" : 44
+        "value" : 55
     }
 }
