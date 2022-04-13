@@ -109,16 +109,13 @@ function getAudioValue(audioArray, start, length) {
 }
 
 // Take rgba values and convert them to its string representation
-function rgbaToString(r, g, b, a) {
-    return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
-}
 function rgbArrayToString(rgb, a = 1) {
     return "rgba(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ", " + a + ")";
 }
 
 // Blanks out the screen
 function blank() {
-	context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 // Update the alpha values in the screenArray so the waterfall droplets "fade"
@@ -126,8 +123,7 @@ function updateAlpha(columnList, numCol, numRow, alphaOffset) {
     for (let i = 0; i < numCol; i++) {
         let colArray = columnList[i].colArray;
         for (let j = 0; j < numRow; j++) {
-            let curAlpha = colArray[j].alpha;
-            colArray[j].alpha = Math.max((curAlpha - alphaOffset), 0);
+            colArray[j].alpha = Math.max((colArray[j].alpha - alphaOffset), 0);
         }
     }
 }
@@ -145,12 +141,12 @@ function updateText(columnList, fontSize, audioColour, dropColour, numCol, numRo
         for (let j = 0; j < audioValue; j++) {
             let text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
             if (!colArray[j]) {
-                columnList[i].colArray[j] = new Droplet(text, audioColour, 1);
+                colArray[j] = new Droplet(text, audioColour, 1);
             }
             else {
-                columnList[i].colArray[j].text = text;
-                columnList[i].colArray[j].colour = audioColour;
-                columnList[i].colArray[j].alpha = 1;
+                colArray[j].text = text;
+                colArray[j].colour = audioColour;
+                colArray[j].alpha = 1;
             }
         }
         // if dropIndex is larger than the ending index of full brightness text

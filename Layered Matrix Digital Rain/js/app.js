@@ -71,8 +71,8 @@ function Waterfall(alphaOffset, dropChance, fontSize, fontStyle, textColour) {
 
 
 // Take rgba values and convert them to its string representation
-function rgbaToString(r, g, b, a) {
-    return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+function rgbaToString(rgb, a) {
+    return "rgba(" + rgb + ", " + a + ")";
 }
 
 // Return the column and row given the flattened array [matrix] index and number of columns in matrix
@@ -90,13 +90,12 @@ function getIndex(col, row, numCol) {
 
 // Blanks out the screen
 function blank() {
-	context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 // Update the alpha values in the screenArray so the waterfall droplets "fade"
 function updateAlpha(screenArray, alphaOffset) {
     for (let i = 0, lenScreen = screenArray.length; i < lenScreen; i++) {
-        let curAlpha = screenArray[i].alpha;
         screenArray[i].alpha = Math.max((screenArray[i].alpha - alphaOffset), 0);
     }
 }
@@ -145,7 +144,7 @@ function draw(screenArray, fontSize, fontStyle, numCol) {
         let [col, row] = getColRow(i, numCol);
         let text = screenArray[i].text;
         if (text !== NaN) { // NaN was the flag for "not drawn" given in updateText function
-            context.fillStyle = rgbaToString(screenArray[i].colour[0], screenArray[i].colour[1], screenArray[i].colour[2], screenArray[i].alpha);
+            context.fillStyle = rgbaToString(screenArray[i].colour, screenArray[i].alpha);
              // Draw to screen
             context.fillText(text, col*fontSize, (row + 1)*fontSize); // (row + 1) since top row is 0 in our data structure
         }
@@ -253,9 +252,7 @@ window.wallpaperPropertyListener = {
             g_waterfalls[0].dropChance = properties.drop1.value;
         }
         if (properties.size1) {
-            stop();
             g_waterfalls[0].reset(properties.size1.value);
-            start();
         }
         if (properties.font1) {
             g_waterfalls[0].fontStyle = properties.font1.value;
@@ -273,9 +270,7 @@ window.wallpaperPropertyListener = {
             g_waterfalls[1].dropChance = properties.drop2.value;
         }
         if (properties.size2) {
-            stop();
             g_waterfalls[1].reset(properties.size2.value);
-            start()
         }
         if (properties.font2) {
             g_waterfalls[1].fontStyle = properties.font2.value;
@@ -293,9 +288,7 @@ window.wallpaperPropertyListener = {
             g_waterfalls[2].dropChance = properties.drop3.value;
         }
         if (properties.size3) {
-            stop();
             g_waterfalls[2].reset(properties.size3.value);
-            start();
         }
         if (properties.font3) {
             g_waterfalls[2].fontStyle = properties.font3.value;
@@ -313,9 +306,7 @@ window.wallpaperPropertyListener = {
             g_waterfalls[3].dropChance = properties.drop4.value;
         }
         if (properties.size4) {
-            stop();
             g_waterfalls[3].reset(properties.size4.value);
-            start();
         }
         if (properties.font4) {
             g_waterfalls[3].fontStyle = properties.font4.value;
