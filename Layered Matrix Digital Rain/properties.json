@@ -1,281 +1,290 @@
 "properties" : 
 {
-    "alpha1" : 
-    {
-        "condition" : "numwaterfalls.value >= 1",
-        "fraction" : true,
-        "index" : 4,
-        "max" : 1,
-        "min" : 0,
-        "order" : 104,
-        "precision" : 4,
-        "step" : 0.001,
-        "text" : "Decay of Waterfall",
-        "type" : "slider",
-        "value" : 0.05
-    },
-    "alpha2" : 
-    {
-        "condition" : "numwaterfalls.value >= 2",
-        "fraction" : true,
-        "index" : 9,
-        "max" : 1,
-        "min" : 0,
-        "order" : 109,
-        "precision" : 4,
-        "step" : 0.001,
-        "text" : "Decay of Waterfall 2",
-        "type" : "slider",
-        "value" : 0.05
-    },
-    "alpha3" : 
-    {
-        "condition" : "numwaterfalls.value >= 3",
-        "fraction" : true,
-        "index" : 14,
-        "max" : 1,
-        "min" : 0,
-        "order" : 114,
-        "precision" : 4,
-        "step" : 0.001,
-        "text" : "Decay of Waterfall 3",
-        "type" : "slider",
-        "value" : 0.05
-    },
-    "alpha4" : 
-    {
-        "condition" : "numwaterfalls.value >= 4",
-        "fraction" : true,
-        "index" : 19,
-        "max" : 1,
-        "min" : 0,
-        "order" : 119,
-        "precision" : 4,
-        "step" : 0.001,
-        "text" : "Decay of Waterfall",
-        "type" : "slider",
-        "value" : 0.05
-    },
-    "backgroundcolour" : 
-    {
-        "index" : 0,
-        "order" : 100,
-        "text" : "Background Colour",
-        "type" : "color",
-        "value" : "0 0 0"
-    },
-    "colour1" : 
-    {
-        "condition" : "numwaterfalls.value >= 1",
-        "index" : 8,
-        "order" : 108,
-        "text" : "Colour of Waterfall",
-        "type" : "color",
-        "value" : "1 1 1"
-    },
-    "colour2" : 
-    {
-        "condition" : "numwaterfalls.value >= 2",
-        "index" : 13,
-        "order" : 113,
-        "text" : "Colour of Waterfall 2",
-        "type" : "color",
-        "value" : "1 1 1"
-    },
-    "colour3" : 
-    {
-        "condition" : "numwaterfalls.value >= 3",
-        "index" : 18,
-        "order" : 118,
-        "text" : "Colour of Waterfall 3",
-        "type" : "color",
-        "value" : "1 1 1"
-    },
-    "colour4" : 
-    {
-        "condition" : "numwaterfalls.value >= 4",
-        "index" : 23,
-        "order" : 123,
-        "text" : "Colour of Waterfall 4",
-        "type" : "color",
-        "value" : "1 1 1"
-    },
-    "customalphabet" : 
-    {
-        "index" : 1,
-        "order" : 101,
-        "text" : "Custom Alphabet",
-        "type" : "textinput",
-        "value" : ""
-    },
-    "delay" : 
-    {
-        "condition" : "",
-        "fraction" : false,
-        "index" : 2,
-        "max" : 1000,
-        "min" : 1,
-        "order" : 102,
-        "text" : "Speed of Waterfalls",
-        "type" : "slider",
-        "value" : 50
-    },
-    "drop1" : 
-    {
-        "condition" : "numwaterfalls.value >= 1",
-        "fraction" : true,
-        "index" : 5,
-        "max" : 1,
-        "min" : 0,
-        "order" : 105,
-        "precision" : 4,
-        "step" : 0.001,
-        "text" : "Drop Chance of Waterfall",
-        "type" : "slider",
-        "value" : 0.025
-    },
-    "drop2" : 
-    {
-        "condition" : "numwaterfalls.value >= 2",
-        "fraction" : true,
-        "index" : 10,
-        "max" : 1,
-        "min" : 0,
-        "order" : 110,
-        "precision" : 4,
-        "step" : 0.001,
-        "text" : "Drop Chance of Waterfall 2",
-        "type" : "slider",
-        "value" : 0.025
-    },
-    "drop3" : 
-    {
-        "condition" : "numwaterfalls.value >= 3",
-        "fraction" : true,
-        "index" : 15,
-        "max" : 1,
-        "min" : 0,
-        "order" : 115,
-        "precision" : 4,
-        "step" : 0.001,
-        "text" : "Drop Chance of Waterfall 3",
-        "type" : "slider",
-        "value" : 0.025
-    },
-    "drop4" : 
-    {
-        "condition" : "numwaterfalls.value >= 4",
-        "fraction" : true,
-        "index" : 20,
-        "max" : 1,
-        "min" : 0,
-        "order" : 120,
-        "precision" : 4,
-        "step" : 0.001,
-        "text" : "Drop Chance of Waterfall 4",
-        "type" : "slider",
-        "value" : 0.025
-    },
-    "font1" : 
-    {
-        "condition" : "numwaterfalls.value >= 1",
-        "index" : 7,
-        "order" : 107,
-        "text" : "Font Style of Waterfall",
-        "type" : "textinput",
-        "value" : "monospace"
-    },
-    "font2" : 
-    {
-        "condition" : "numwaterfalls.value >= 2",
-        "index" : 12,
-        "order" : 112,
-        "text" : "Font Style of Waterfall 2",
-        "type" : "textinput",
-        "value" : "monospace"
-    },
-    "font3" : 
-    {
-        "condition" : "numwaterfalls.value >= 3",
-        "index" : 17,
-        "order" : 117,
-        "text" : "Font Style of Waterfall 3",
-        "type" : "textinput",
-        "value" : "monospace"
-    },
-    "font4" : 
-    {
-        "condition" : "numwaterfalls.value >= 4",
-        "index" : 22,
-        "order" : 122,
-        "text" : "Font Style of Waterfall 4",
-        "type" : "textinput",
-        "value" : "monospace"
-    },
-    "numwaterfalls" : 
-    {
-        "fraction" : false,
-        "index" : 3,
-        "max" : 4,
-        "min" : 1,
-        "order" : 103,
-        "text" : "Number of Waterfalls",
-        "type" : "slider",
-        "value" : 1
-    },
-    "schemecolor" : 
-    {
-        "order" : 0,
-        "text" : "ui_browse_properties_scheme_color",
-        "type" : "color",
-        "value" : "0 0 0"
-    },
-    "size1" : 
-    {
-        "condition" : "numwaterfalls.value >= 1",
-        "fraction" : false,
-        "index" : 6,
-        "max" : 200,
-        "min" : 1,
-        "order" : 106,
-        "text" : "Font Size of Waterfall",
-        "type" : "slider",
-        "value" : 22
-    },
-    "size2" : 
-    {
-        "condition" : "numwaterfalls.value >= 2",
-        "fraction" : false,
-        "index" : 11,
-        "max" : 200,
-        "min" : 1,
-        "order" : 111,
-        "text" : "Font Size of Waterfall 2",
-        "type" : "slider",
-        "value" : 33
-    },
-    "size3" : 
-    {
-        "condition" : "numwaterfalls.value >= 3",
-        "fraction" : false,
-        "index" : 16,
-        "max" : 200,
-        "min" : 1,
-        "order" : 116,
-        "text" : "Font Size of Waterfall 3",
-        "type" : "slider",
-        "value" : 44
-    },
-    "size4" : 
-    {
-        "condition" : "numwaterfalls.value >= 4",
-        "fraction" : false,
-        "index" : 21,
-        "max" : 200,
-        "min" : 1,
-        "order" : 121,
-        "text" : "Font Size of Waterfall 4",
-        "type" : "slider",
-        "value" : 55
-    }
+	"alpha1" : 
+	{
+		"condition" : "numwaterfalls.value >= 1",
+		"fraction" : true,
+		"index" : 5,
+		"max" : 1,
+		"min" : 0,
+		"order" : 105,
+		"precision" : 4,
+		"step" : 0.001,
+		"text" : "Decay of Waterfall",
+		"type" : "slider",
+		"value" : 0.05
+	},
+	"alpha2" : 
+	{
+		"condition" : "numwaterfalls.value >= 2",
+		"fraction" : true,
+		"index" : 10,
+		"max" : 1,
+		"min" : 0,
+		"order" : 110,
+		"precision" : 4,
+		"step" : 0.001,
+		"text" : "Decay of Waterfall 2",
+		"type" : "slider",
+		"value" : 0.05
+	},
+	"alpha3" : 
+	{
+		"condition" : "numwaterfalls.value >= 3",
+		"fraction" : true,
+		"index" : 15,
+		"max" : 1,
+		"min" : 0,
+		"order" : 115,
+		"precision" : 4,
+		"step" : 0.001,
+		"text" : "Decay of Waterfall 3",
+		"type" : "slider",
+		"value" : 0.05
+	},
+	"alpha4" : 
+	{
+		"condition" : "numwaterfalls.value >= 4",
+		"fraction" : true,
+		"index" : 20,
+		"max" : 1,
+		"min" : 0,
+		"order" : 120,
+		"precision" : 4,
+		"step" : 0.001,
+		"text" : "Decay of Waterfall",
+		"type" : "slider",
+		"value" : 0.05
+	},
+	"backgroundcolour" : 
+	{
+		"condition" : "!backgroundimage.value",
+		"index" : 0,
+		"order" : 100,
+		"text" : "Background Colour",
+		"type" : "color",
+		"value" : "0 0 0"
+	},
+	"backgroundimage" : 
+	{
+		"index" : 1,
+		"order" : 101,
+		"text" : "Background Image",
+		"type" : "file",
+		"value" : ""
+	},
+	"colour1" : 
+	{
+		"condition" : "numwaterfalls.value >= 1",
+		"index" : 9,
+		"order" : 109,
+		"text" : "Colour of Waterfall",
+		"type" : "color",
+		"value" : "1 1 1"
+	},
+	"colour2" : 
+	{
+		"condition" : "numwaterfalls.value >= 2",
+		"index" : 14,
+		"order" : 114,
+		"text" : "Colour of Waterfall 2",
+		"type" : "color",
+		"value" : "1 1 1"
+	},
+	"colour3" : 
+	{
+		"condition" : "numwaterfalls.value >= 3",
+		"index" : 19,
+		"order" : 119,
+		"text" : "Colour of Waterfall 3",
+		"type" : "color",
+		"value" : "1 1 1"
+	},
+	"colour4" : 
+	{
+		"condition" : "numwaterfalls.value >= 4",
+		"index" : 24,
+		"order" : 124,
+		"text" : "Colour of Waterfall 4",
+		"type" : "color",
+		"value" : "1 1 1"
+	},
+	"customalphabet" : 
+	{
+		"index" : 2,
+		"order" : 102,
+		"text" : "Custom Alphabet",
+		"type" : "textinput",
+		"value" : ""
+	},
+	"delay" : 
+	{
+		"condition" : "",
+		"fraction" : false,
+		"index" : 3,
+		"max" : 1000,
+		"min" : 1,
+		"order" : 103,
+		"text" : "Speed of Waterfalls",
+		"type" : "slider",
+		"value" : 50
+	},
+	"drop1" : 
+	{
+		"condition" : "numwaterfalls.value >= 1",
+		"fraction" : true,
+		"index" : 6,
+		"max" : 1,
+		"min" : 0,
+		"order" : 106,
+		"precision" : 4,
+		"step" : 0.001,
+		"text" : "Drop Chance of Waterfall",
+		"type" : "slider",
+		"value" : 0.025
+	},
+	"drop2" : 
+	{
+		"condition" : "numwaterfalls.value >= 2",
+		"fraction" : true,
+		"index" : 11,
+		"max" : 1,
+		"min" : 0,
+		"order" : 111,
+		"precision" : 4,
+		"step" : 0.001,
+		"text" : "Drop Chance of Waterfall 2",
+		"type" : "slider",
+		"value" : 0.025
+	},
+	"drop3" : 
+	{
+		"condition" : "numwaterfalls.value >= 3",
+		"fraction" : true,
+		"index" : 16,
+		"max" : 1,
+		"min" : 0,
+		"order" : 116,
+		"precision" : 4,
+		"step" : 0.001,
+		"text" : "Drop Chance of Waterfall 3",
+		"type" : "slider",
+		"value" : 0.025
+	},
+	"drop4" : 
+	{
+		"condition" : "numwaterfalls.value >= 4",
+		"fraction" : true,
+		"index" : 21,
+		"max" : 1,
+		"min" : 0,
+		"order" : 121,
+		"precision" : 4,
+		"step" : 0.001,
+		"text" : "Drop Chance of Waterfall 4",
+		"type" : "slider",
+		"value" : 0.025
+	},
+	"font1" : 
+	{
+		"condition" : "numwaterfalls.value >= 1",
+		"index" : 8,
+		"order" : 108,
+		"text" : "Font Style of Waterfall",
+		"type" : "textinput",
+		"value" : "monospace"
+	},
+	"font2" : 
+	{
+		"condition" : "numwaterfalls.value >= 2",
+		"index" : 13,
+		"order" : 113,
+		"text" : "Font Style of Waterfall 2",
+		"type" : "textinput",
+		"value" : "monospace"
+	},
+	"font3" : 
+	{
+		"condition" : "numwaterfalls.value >= 3",
+		"index" : 18,
+		"order" : 118,
+		"text" : "Font Style of Waterfall 3",
+		"type" : "textinput",
+		"value" : "monospace"
+	},
+	"font4" : 
+	{
+		"condition" : "numwaterfalls.value >= 4",
+		"index" : 23,
+		"order" : 123,
+		"text" : "Font Style of Waterfall 4",
+		"type" : "textinput",
+		"value" : "monospace"
+	},
+	"numwaterfalls" : 
+	{
+		"fraction" : false,
+		"index" : 4,
+		"max" : 4,
+		"min" : 1,
+		"order" : 104,
+		"text" : "Number of Waterfalls",
+		"type" : "slider",
+		"value" : 1
+	},
+	"schemecolor" : 
+	{
+		"order" : 0,
+		"text" : "ui_browse_properties_scheme_color",
+		"type" : "color",
+		"value" : "0 0 0"
+	},
+	"size1" : 
+	{
+		"condition" : "numwaterfalls.value >= 1",
+		"fraction" : false,
+		"index" : 7,
+		"max" : 200,
+		"min" : 1,
+		"order" : 107,
+		"text" : "Font Size of Waterfall",
+		"type" : "slider",
+		"value" : 22
+	},
+	"size2" : 
+	{
+		"condition" : "numwaterfalls.value >= 2",
+		"fraction" : false,
+		"index" : 12,
+		"max" : 200,
+		"min" : 1,
+		"order" : 112,
+		"text" : "Font Size of Waterfall 2",
+		"type" : "slider",
+		"value" : 33
+	},
+	"size3" : 
+	{
+		"condition" : "numwaterfalls.value >= 3",
+		"fraction" : false,
+		"index" : 17,
+		"max" : 200,
+		"min" : 1,
+		"order" : 117,
+		"text" : "Font Size of Waterfall 3",
+		"type" : "slider",
+		"value" : 44
+	},
+	"size4" : 
+	{
+		"condition" : "numwaterfalls.value >= 4",
+		"fraction" : false,
+		"index" : 22,
+		"max" : 200,
+		"min" : 1,
+		"order" : 122,
+		"text" : "Font Size of Waterfall 4",
+		"type" : "slider",
+		"value" : 55
+	}
 }

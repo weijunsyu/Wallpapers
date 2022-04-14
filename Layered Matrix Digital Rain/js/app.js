@@ -45,7 +45,7 @@ function Waterfall(alphaOffset, dropChance, fontSize, fontStyle, textColour) {
     this.fontSize = fontSize; // determines the size of the "grid" of screenArray
     this.fontStyle = fontStyle;
     this.textColour = textColour; // default colour of the text give as: [r, g, b]
-    
+
     this.screenArray = []; // flattened matrix of all Droplets
     this.waveFront = []; // position array of the wavefront (waterfall leading edge)
     this.numCol = Math.ceil(canvas.width/this.fontSize);
@@ -211,14 +211,13 @@ function init(maxNumWaterfalls) {
     let sizes = [22, 33, 44, 55];
     let fonts = ["monospace", "monospace", "monospace", "monospace"];
     let colours = [[255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255]];
-    
+
     for(let i = 0; i < maxNumWaterfalls; i++) {
         g_waterfalls.push(new Waterfall(alphas[i], drops[i], sizes[i], fonts[i], colours[i]));
     }
 }
 
-init(4);
-start();
+init(g_numwaterfalls);
 
 // Event Listener for wallpaper engine user properties
 window.wallpaperPropertyListener = {
@@ -227,6 +226,10 @@ window.wallpaperPropertyListener = {
             let backgroundColour = properties.backgroundcolour.value.split(" ");
             backgroundColour = backgroundColour.map(c => Math.ceil(c * 255));
             canvas.style.backgroundColor = "rgb(" + backgroundColour + ")";
+        }
+        if (properties.backgroundimage) {
+            let image = "file:///" + properties.backgroundimage.value;
+            canvas.style.backgroundImage = "url('" + image + "')";
         }
         if (properties.customalphabet) {
             let newAlphabet = properties.customalphabet.value.replace(/\s/g,'');
@@ -318,3 +321,5 @@ window.wallpaperPropertyListener = {
         }
     }
 };
+
+start();
