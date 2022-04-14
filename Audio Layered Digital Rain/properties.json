@@ -1,192 +1,228 @@
-"properties" : 
+"properties" :
 {
-	"alpha1" : 
+	"alpha1" :
 	{
 		"condition" : "numwaterfalls.value >= 1",
 		"fraction" : true,
-		"index" : 3,
+		"index" : 7,
 		"max" : 1,
 		"min" : 0,
-		"order" : 103,
+		"order" : 107,
 		"precision" : 4,
 		"step" : 0.001,
 		"text" : "Decay of Waterfall",
 		"type" : "slider",
 		"value" : 0.1
 	},
-	"alpha2" : 
+	"alpha2" :
 	{
 		"condition" : "numwaterfalls.value >= 2",
 		"fraction" : true,
-		"index" : 8,
+		"index" : 12,
 		"max" : 1,
 		"min" : 0,
-		"order" : 108,
+		"order" : 112,
 		"precision" : 4,
 		"step" : 0.001,
 		"text" : "Decay of Waterfall 2",
 		"type" : "slider",
 		"value" : 0.1
 	},
-	"alpha3" : 
+	"alpha3" :
 	{
 		"condition" : "numwaterfalls.value >= 3",
 		"fraction" : true,
-		"index" : 13,
+		"index" : 17,
 		"max" : 1,
 		"min" : 0,
-		"order" : 113,
+		"order" : 117,
 		"precision" : 4,
 		"step" : 0.001,
 		"text" : "Decay of Waterfall 3",
 		"type" : "slider",
 		"value" : 0.1
 	},
-	"audiocolour1" : 
+	"audiocolour1" :
 	{
 		"condition" : "numwaterfalls.value >= 1",
-		"index" : 5,
-		"order" : 105,
+		"index" : 9,
+		"order" : 109,
 		"text" : "Audio Colour of Waterfall",
 		"type" : "color",
 		"value" : "1 0 0"
 	},
-	"audiocolour2" : 
+	"audiocolour2" :
 	{
 		"condition" : "numwaterfalls.value >= 2",
-		"index" : 10,
-		"order" : 110,
+		"index" : 14,
+		"order" : 114,
 		"text" : "Audio Colour of Waterfall 2",
 		"type" : "color",
 		"value" : "1 0 0"
 	},
-	"audiocolour3" : 
+	"audiocolour3" :
 	{
 		"condition" : "numwaterfalls.value >= 3",
-		"index" : 15,
-		"order" : 115,
+		"index" : 19,
+		"order" : 119,
 		"text" : "Audio Colour of Waterfall 3",
 		"type" : "color",
 		"value" : "1 0 0"
 	},
-	"backgroundcolour" : 
+	"backgroundcolour" :
 	{
+		"condition" : "!backgroundimage.value",
 		"index" : 0,
 		"order" : 100,
 		"text" : "Background Colour",
 		"type" : "color",
 		"value" : "0 0 0"
 	},
-	"cols1" : 
+	"backgroundimage" :
+	{
+		"index" : 1,
+		"order" : 101,
+		"text" : "Background Image",
+		"type" : "file",
+		"value" : ""
+	},
+	"cols1" :
 	{
 		"condition" : "numwaterfalls.value >= 1",
 		"fraction" : false,
-		"index" : 7,
+		"index" : 11,
 		"max" : 128,
 		"min" : 1,
-		"order" : 107,
+		"order" : 111,
 		"text" : "Number of Columns",
 		"type" : "slider",
 		"value" : 64
 	},
-	"cols2" : 
+	"cols2" :
 	{
 		"condition" : "numwaterfalls.value >= 2",
 		"fraction" : false,
-		"index" : 12,
+		"index" : 16,
 		"max" : 128,
 		"min" : 1,
-		"order" : 112,
+		"order" : 116,
 		"text" : "Number of Columns 2",
 		"type" : "slider",
 		"value" : 32
 	},
-	"cols3" : 
+	"cols3" :
 	{
 		"condition" : "numwaterfalls.value >= 3",
 		"fraction" : false,
-		"index" : 17,
+		"index" : 21,
 		"max" : 128,
 		"min" : 1,
-		"order" : 117,
+		"order" : 121,
 		"text" : "Number of Columns 3",
 		"type" : "slider",
 		"value" : 16
 	},
-	"customalphabet" : 
+	"containimage" :
 	{
-		"index" : 1,
-		"order" : 101,
+		"condition" : "backgroundimage.value",
+		"index" : 2,
+		"order" : 102,
+		"text" : "Fit Image",
+		"type" : "bool",
+		"value" : false
+	},
+	"customalphabet" :
+	{
+		"index" : 5,
+		"order" : 105,
 		"text" : "Custom Alphabet",
 		"type" : "textinput",
 		"value" : ""
 	},
-	"dropcolour1" : 
+	"dropcolour1" :
 	{
 		"condition" : "numwaterfalls.value >= 1",
-		"index" : 6,
-		"order" : 106,
+		"index" : 10,
+		"order" : 110,
 		"text" : "Trail Colour of Waterfall",
 		"type" : "color",
 		"value" : "1 1 1"
 	},
-	"dropcolour2" : 
+	"dropcolour2" :
 	{
 		"condition" : "numwaterfalls.value >= 2",
-		"index" : 11,
-		"order" : 111,
+		"index" : 15,
+		"order" : 115,
 		"text" : "Trail Colour of Waterfall 2",
 		"type" : "color",
 		"value" : "1 1 1"
 	},
-	"dropcolour3" : 
+	"dropcolour3" :
 	{
 		"condition" : "numwaterfalls.value >= 3",
-		"index" : 16,
-		"order" : 116,
+		"index" : 20,
+		"order" : 120,
 		"text" : "Trail Colour of Waterfall 3",
 		"type" : "color",
 		"value" : "1 1 1"
 	},
-	"font1" : 
+	"font1" :
 	{
 		"condition" : "numwaterfalls.value >= 1",
-		"index" : 4,
-		"order" : 104,
+		"index" : 8,
+		"order" : 108,
 		"text" : "Font Style of Waterfall",
 		"type" : "textinput",
 		"value" : "monospace"
 	},
-	"font2" : 
+	"font2" :
 	{
 		"condition" : "numwaterfalls.value >= 2",
-		"index" : 9,
-		"order" : 109,
+		"index" : 13,
+		"order" : 113,
 		"text" : "Font Style of Waterfall 2",
 		"type" : "textinput",
 		"value" : "monospace"
 	},
-	"font3" : 
+	"font3" :
 	{
 		"condition" : "numwaterfalls.value >= 3",
-		"index" : 14,
-		"order" : 114,
+		"index" : 18,
+		"order" : 118,
 		"text" : "Font Style of Waterfall 3",
 		"type" : "textinput",
 		"value" : "monospace"
 	},
-	"numwaterfalls" : 
+	"imageposition" :
+	{
+		"condition" : "backgroundimage.value",
+		"index" : 4,
+		"order" : 104,
+		"text" : "Image Position",
+		"type" : "textinput",
+		"value" : "center center"
+	},
+	"numwaterfalls" :
 	{
 		"fraction" : false,
-		"index" : 2,
+		"index" : 6,
 		"max" : 3,
 		"min" : 1,
-		"order" : 102,
+		"order" : 106,
 		"text" : "Number of Waterfalls",
 		"type" : "slider",
 		"value" : 1
 	},
-	"schemecolor" : 
+	"repeatimage" :
+	{
+		"condition" : "backgroundimage.value",
+		"index" : 3,
+		"order" : 103,
+		"text" : "Tile Image",
+		"type" : "bool",
+		"value" : true
+	},
+	"schemecolor" :
 	{
 		"order" : 0,
 		"text" : "ui_browse_properties_scheme_color",

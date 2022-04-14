@@ -45,9 +45,9 @@ function Droplet(text, colour, alpha) {
 }
 
 function AudioColumn() {
-    this.colArray = []; // array of all Droplets in this column 
+    this.colArray = []; // array of all Droplets in this column
     this.dropIndex = 0;
-    
+
     this.reset = function() {
         this.colArray.length = 0;
         this.dropIndex = 0;
@@ -199,7 +199,7 @@ function draw(columnList, fontSize, fontStyle, numCol, numRow) {
 }
 
 // Update the waterfall object such that alpha and text are updated and then draw to screen
-function updateWaterfall(waterfall, alphabet, audioArray) {    
+function updateWaterfall(waterfall, alphabet, audioArray) {
     let columnList = waterfall.columnList;
     let alphaOffset = waterfall.alphaOffset;
     let fontSize = waterfall.fontSize;
@@ -236,7 +236,7 @@ function init(maxNumWaterfalls) {
     let audioColours = [[255, 0, 0], [255, 0, 0], [255, 0, 0]];
     let dropColours = [[255, 255, 255], [255, 255, 255], [255, 255, 255]];
     let columns = [64, 32, 16];
-    
+
     for(let i = 0; i < maxNumWaterfalls; i++) {
         g_waterfalls.push(new Waterfall(alphas[i], fonts[i], audioColours[i], dropColours[i], columns[i]));
     }
@@ -259,6 +259,41 @@ window.wallpaperPropertyListener = {
             let backgroundColour = properties.backgroundcolour.value.split(" ");
             backgroundColour = backgroundColour.map(c => Math.ceil(c * 255));
             canvas.style.backgroundColor = "rgb(" + backgroundColour + ")";
+        }
+        if (properties.backgroundimage) {
+            let image = "file:///" + properties.backgroundimage.value;
+            canvas.style.backgroundImage = "url('" + image + "')";
+        }
+        if (properties.containimage) {
+            let contain = properties.containimage.value;
+            if (contain) {
+                canvas.style.backgroundSize = "contain";
+            }
+            else {
+                canvas.style.backgroundSize = "cover";
+            }
+        }
+        if (properties.repeatimage) {
+            let repeat = properties.repeatimage.value;
+            if (repeat) {
+                canvas.style.backgroundRepeat = "repeat";
+            }
+            else {
+                canvas.style.backgroundRepeat = "no-repeat";
+            }
+        }
+        if (properties.imageposition) {
+            let positionStr = properties.imageposition.value;
+            canvas.style.backgroundPosition = positionStr;
+        }
+        if (properties.customalphabet) {
+            let newAlphabet = properties.customalphabet.value.replace(/\s/g,'');
+            if (newAlphabet) {
+                g_alphabet = newAlphabet;
+            }
+            else {
+                g_alphabet = defaultAlphabet;
+            }
         }
         if (properties.customalphabet) {
             let newAlphabet = properties.customalphabet.value.replace(/\s/g,'');
