@@ -231,6 +231,28 @@ window.wallpaperPropertyListener = {
             let image = "file:///" + properties.backgroundimage.value;
             canvas.style.backgroundImage = "url('" + image + "')";
         }
+        if (properties.containimage) {
+            let contain = properties.containimage.value;
+            if (contain) {
+                canvas.style.backgroundSize = "contain";
+            }
+            else {
+                canvas.style.backgroundSize = "cover";
+            }
+        }
+        if (properties.repeatimage) {
+            let repeat = properties.repeatimage.value;
+            if (repeat) {
+                canvas.style.backgroundRepeat = "repeat";
+            }
+            else {
+                canvas.style.backgroundRepeat = "no-repeat";
+            }
+        }
+        if (properties.imageposition) {
+            let positionStr = properties.imageposition.value;
+            canvas.style.backgroundPosition = positionStr;
+        }
         if (properties.customalphabet) {
             let newAlphabet = properties.customalphabet.value.replace(/\s/g,'');
             if (newAlphabet) {
