@@ -26,6 +26,7 @@ SOFTWARE.
 const YOUTUBE_VIDEO_ID_REGREX = /(^(\s*)|v=|(\/|\?|&){1})([0-9]|[A-Z]|[a-z]|-|_){11}((\/|\?|&){1}|(\s*)$)/g;
 const YOUTUBE_ID_DELIMITER_REGREX = /^v=|\s|\/|\?|&/g;
 const YOUTUBE_ID_EXCEPTIONS = /videoseries/i;
+const YOUTUBE_DEFAULT_ID = "jNQXAC9IVRw";
 
 
 // given some string (url or otherwise) return the youtube video id if it exists or null if not
@@ -93,7 +94,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // Replace the "ytplayer" element with an <iframe> and YouTube player after the API code downloads.
 function onYouTubePlayerAPIReady() {
     g_player = new YT.Player("ytplayer", {
-        videoId: null,
+        videoId: YOUTUBE_DEFAULT_ID,
         playerVars: {
             "enablejsapi": 1,
             "loop": 1,
